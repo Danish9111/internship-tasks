@@ -71,6 +71,8 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ],
                   ),
+                  floating: true,
+                  snap: true,
                   centerTitle: false,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -78,7 +80,6 @@ class _MainScreenState extends State<MainScreen> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color(0xFF833AB4),
                           Color(0xFF833AB4),
                           Color(0xFFFD1D1D),
                           Color(0xFFFCB045),
