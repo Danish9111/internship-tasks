@@ -44,52 +44,68 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              toolbarHeight: 100,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '@nicole_edison1',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
+      body: Stack(
+        children: [
+          NestedScrollView(
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  toolbarHeight: 100,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '@nicole_edison1',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(CupertinoIcons.share_up, color: Colors.white),
+                          SizedBox(width: 40),
+                          Icon(CupertinoIcons.settings, color: Colors.white)
+                        ],
+                      ),
+                    ],
+                  ),
+                  centerTitle: false,
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  flexibleSpace: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF833AB4),
+                          Color(0xFF833AB4),
+                          Color(0xFFFD1D1D),
+                          Color(0xFFFCB045),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Icon(CupertinoIcons.share_up, color: Colors.white),
-                      SizedBox(width: 40),
-                      Icon(CupertinoIcons.settings, color: Colors.white)
-                    ],
-                  ),
-                ],
-              ),
-              floating: false,
-              snap: false,
-              centerTitle: false,
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              flexibleSpace: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF833AB4),
-                      Color(0xFFFD1D1D),
-                      Color(0xFFFCB045),
-                    ],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
                 ),
+              ];
+            },
+            body: screens[selectedIndex],
+          ),
+          Positioned(
+            top: 120,
+            left: 20,
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 40,
+              child: Icon(
+                Icons.person,
+                size: 40,
               ),
             ),
-          ];
-        },
-        body: screens[selectedIndex],
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
@@ -138,15 +154,6 @@ class _HomeScreenState extends State<HomeScreen> {
         length: 4,
         child: Stack(
           children: [
-            Positioned(
-              top: -20,
-              left: 20,
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 50,
-                child: Icon(Icons.person),
-              ),
-            ),
             Container(
               padding: EdgeInsets.all(20),
               height: double.infinity,
