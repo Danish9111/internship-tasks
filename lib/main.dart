@@ -71,8 +71,6 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ],
                   ),
-                  floating: true,
-                  snap: true,
                   centerTitle: false,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
