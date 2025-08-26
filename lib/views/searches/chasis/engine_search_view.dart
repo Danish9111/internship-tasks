@@ -3,9 +3,16 @@ import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/dashboard%20view/dashboard_view.dart';
 
-class ChassisOrEngineNoSearchView extends StatelessWidget {
+class ChassisOrEngineNoSearchView extends StatefulWidget {
   const ChassisOrEngineNoSearchView({super.key});
 
+  @override
+  State<ChassisOrEngineNoSearchView> createState() =>
+      _ChassisOrEngineNoSearchViewState();
+}
+
+class _ChassisOrEngineNoSearchViewState
+    extends State<ChassisOrEngineNoSearchView> {
   final List<Map<String, String>> vehicles = const [
     {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
     {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
@@ -24,10 +31,34 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
     {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
     // Add more sample vehicles or fetch from API
   ];
+  String selectedValue = 'By Number';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Get.to(() => DashboardView());
+          },
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(24), // Adjust the radius as needed
+          ),
+        ),
+        backgroundColor: AppColors.primary.withValues(alpha: 0.8),
+        title: Text(
+          "Chassis or Engine Search",
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+      ),
       backgroundColor: AppColors.lightScaffoldBackgroundColor,
       body: SafeArea(
         child: GestureDetector(
@@ -36,7 +67,7 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
-              HeaderAsAppBar(text: "Engine/Chassis Search", isbackicon: true),
+              // HeaderAsAppBar(text: "Engine/Chassis Search", isbackicon: true),
               const SizedBox(height: 16),
 
               // Search Field
@@ -53,7 +84,10 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
                           //   Icons.search,
                           //   color: AppColors.primary,
                           // ),
-                          suffixIcon: Icon(Icons.mic),
+                          suffixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.mic),
+                          ),
                           filled: false,
                           fillColor: AppColors.kLightElevated,
                           enabledBorder: OutlineInputBorder(
@@ -76,13 +110,39 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
                         },
                       ),
                     ),
-                    Expanded(flex: 1, child: Icon(Icons.search)),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: () {},
+                      ),
+                    ),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(16),
-                child: Icon(Icons.filter_list_outlined),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: DropdownButton<String>(
+                  dropdownColor: Colors.white,
+                  value: selectedValue, // the current selected item
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedValue = newValue!;
+                    });
+                  },
+                  items:
+                      <String>[
+                        'By Number',
+                        'By Make',
+                        'By Engine',
+                        'By Chassis',
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                ),
               ),
 
               // Header Row

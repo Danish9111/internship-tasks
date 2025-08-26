@@ -72,18 +72,20 @@ class _LoginViewState extends State<RegisterView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.scaffoldBackgroundColor,
+      backgroundColor: AppColors.lightScaffoldBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               // Header with curved bottom and subtle overlay
               // CustomHeader(fadeIn: _fadeIn, slideUpHeader: _slideUpHeader),
+              Image.asset('assets/logo.png', height: 150),
+
               const Text(
-                'Register',
+                'Register to Continue ',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 44,
+                  color: AppColors.blackTextColor,
+                  fontSize: 20,
                   fontWeight: FontWeight.w800,
                   letterSpacing: 0.5,
                 ),
@@ -108,7 +110,11 @@ class _LoginViewState extends State<RegisterView>
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
                             style: const TextStyle(color: Colors.white),
-                            decoration: _decoration('Name', icon: Icons.person),
+                            decoration: _decoration('Name', icon: Icons.person)
+                                .copyWith(
+                                  filled: true,
+                                  fillColor: AppColors.kLightElevated,
+                                ),
                             validator: (v) {
                               if (v == null || v.trim().isEmpty)
                                 return 'Name is required';
@@ -119,12 +125,17 @@ class _LoginViewState extends State<RegisterView>
                             },
                           ),
                           const SizedBox(height: 14),
-                          // Phone Nukber
+                          // Phone Number
                           TextFormField(
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
                             style: const TextStyle(color: Colors.white),
-                            decoration: _decoration('Phone', icon: Icons.phone),
+                            decoration: _decoration('Phone', icon: Icons.phone)
+                                .copyWith(
+                                  filled: true,
+                                  fillColor: AppColors
+                                      .kLightElevated, // or any color you want
+                                ),
                             validator: (v) {
                               if (v == null || v.trim().isEmpty)
                                 return 'Phone is required';
@@ -141,10 +152,15 @@ class _LoginViewState extends State<RegisterView>
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
                             style: const TextStyle(color: Colors.white),
-                            decoration: _decoration(
-                              'Email',
-                              icon: Icons.mail_outline,
-                            ),
+                            decoration:
+                                _decoration(
+                                  'Email',
+                                  icon: Icons.email_outlined,
+                                ).copyWith(
+                                  filled: true,
+                                  fillColor: AppColors
+                                      .kLightElevated, // or any color you want
+                                ),
                             validator: (v) {
                               if (v == null || v.trim().isEmpty)
                                 return 'Email is required';
@@ -154,15 +170,21 @@ class _LoginViewState extends State<RegisterView>
                               return ok ? null : 'Enter a valid email';
                             },
                           ),
+
                           const SizedBox(height: 14),
                           TextFormField(
                             controller: _passwordCtrl,
                             obscureText: true,
                             style: const TextStyle(color: Colors.white),
-                            decoration: _decoration(
-                              'Password',
-                              icon: Icons.lock_outline,
-                            ),
+                            decoration:
+                                _decoration(
+                                  'Password',
+                                  icon: Icons.lock_outline,
+                                ).copyWith(
+                                  filled: true,
+                                  fillColor: AppColors
+                                      .kLightElevated, // or any color you want
+                                ),
                             validator: (v) {
                               if (v == null || v.isEmpty)
                                 return 'Password is required';
@@ -176,7 +198,7 @@ class _LoginViewState extends State<RegisterView>
                             child: Text(
                               'Select Admin',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.blackTextColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -187,29 +209,38 @@ class _LoginViewState extends State<RegisterView>
                           // Drop Down for admin Selction
                           // Animated Dropdown
                           DropdownButtonFormField<String>(
-                            value: 'Admin 1',
-                            decoration: _decoration("Select Admin"),
-                            dropdownColor: AppColors.kDarkElevated,
+                            initialValue: 'Admin 1',
+                            decoration: _decoration("Select Admin").copyWith(
+                              filled: true,
+                              fillColor: AppColors.kLightElevated,
+                            ),
+                            dropdownColor: AppColors.kLightElevated,
                             items: const [
                               DropdownMenuItem(
                                 value: "Admin 1",
                                 child: Text(
                                   "Admin 1",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: AppColors.blackTextColor,
+                                  ),
                                 ),
                               ),
                               DropdownMenuItem(
                                 value: "Admin 2",
                                 child: Text(
                                   "Admin 2",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: AppColors.blackTextColor,
+                                  ),
                                 ),
                               ),
                               DropdownMenuItem(
                                 value: "Admin 3",
                                 child: Text(
                                   "Admin 3",
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: AppColors.blackTextColor,
+                                  ),
                                 ),
                               ),
                             ],
@@ -227,7 +258,7 @@ class _LoginViewState extends State<RegisterView>
                             child: Text(
                               'Upload Images',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.blackTextColor,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -322,7 +353,7 @@ class ImageSelctionsContainers extends StatelessWidget {
         height: 120,
 
         decoration: BoxDecoration(
-          color: AppColors.kDarkElevated,
+          color: AppColors.kLightElevated,
           borderRadius: BorderRadius.circular(10),
           // border: Border.all(color: AppColors.primary),
         ),

@@ -19,16 +19,25 @@ class _DashboardViewState extends State<DashboardView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightScaffoldBackgroundColor,
-      // appBar: AppBar(
-      //   title:
-      //   centerTitle: true,
-      //   backgroundColor: AppColors.kLightElevated,
-      // ),
+      appBar: AppBar(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(24), // Adjust the radius as needed
+          ),
+        ),
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.primary.withValues(alpha: 0.8),
+        title: Text(
+          "Dashboard",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderAsAppBar(text: "Dashboard"),
+              // HeaderAsAppBar(text: "Dashboard"),
               SizedBox(height: 10),
               // CASES INFO CARD
               Padding(

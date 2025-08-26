@@ -72,18 +72,19 @@ class _LoginViewState extends State<LoginView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.scaffoldBackgroundColor,
+      backgroundColor: AppColors.lightScaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Header with curved bottom and subtle overlay
             // CustomHeader(fadeIn: _fadeIn, slideUpHeader: _slideUpHeader),
+            Image.asset('assets/logo.png', height: 150),
             const Text(
-              'Login',
+              'Login to your account',
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 44,
+                color: AppColors.blackTextColor,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 0.5,
               ),
@@ -104,10 +105,14 @@ class _LoginViewState extends State<LoginView>
                           controller: _emailCtrl,
                           keyboardType: TextInputType.emailAddress,
                           style: const TextStyle(color: Colors.white),
-                          decoration: _decoration(
-                            'Email',
-                            icon: Icons.mail_outline,
-                          ),
+                          decoration:
+                              _decoration(
+                                'Email',
+                                icon: Icons.mail_outline,
+                              ).copyWith(
+                                filled: true,
+                                fillColor: AppColors.kLightElevated,
+                              ),
                           validator: (v) {
                             if (v == null || v.trim().isEmpty)
                               return 'Email is required';
@@ -122,10 +127,14 @@ class _LoginViewState extends State<LoginView>
                           controller: _passwordCtrl,
                           obscureText: true,
                           style: const TextStyle(color: Colors.white),
-                          decoration: _decoration(
-                            'Password',
-                            icon: Icons.lock_outline,
-                          ),
+                          decoration:
+                              _decoration(
+                                'Password',
+                                icon: Icons.lock_outline,
+                              ).copyWith(
+                                filled: true,
+                                fillColor: AppColors.kLightElevated,
+                              ),
                           validator: (v) {
                             if (v == null || v.isEmpty)
                               return 'Password is required';
