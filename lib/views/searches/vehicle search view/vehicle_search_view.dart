@@ -44,17 +44,8 @@ class _VehicleSearchViewState extends State<VehicleSearchView> {
         children: [
           SizedBox(height: 10),
           CustomSearchWidget(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: DescriptionBar(text1: 'Vehicle No', text2: 'Model'),
-            ),
-          ),
+          DescriptionBar(text1: 'Vehicle No.', text2: 'Model'),
+
           SizedBox(height: 10),
           Expanded(
             child: ListView.builder(

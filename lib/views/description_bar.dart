@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 
 class DescriptionBar extends StatelessWidget {
   final String? text1;
@@ -15,32 +16,51 @@ class DescriptionBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.center,
-            text1 ?? '',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        decoration: BoxDecoration(
+          color: AppColors.primary.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(12),
         ),
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.center,
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                text1 ?? '',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
 
-            text2 ?? '',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.center,
-            text3 ?? '',
+                text2 ?? '',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                text3 ?? '',
 
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

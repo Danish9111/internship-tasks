@@ -52,18 +52,8 @@ class _CameraSearchViewState extends State<CameraSearchView> {
             ),
           ),
           SizedBox(height: 20),
+          DescriptionBar(text1: 'Vehicle No.', text2: 'Matched?'),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: DescriptionBar(text1: 'Vheicle No', text2: 'Matched?'),
-            ),
-          ),
           SizedBox(height: 20),
           Expanded(
             child: ListView.builder(

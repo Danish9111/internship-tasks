@@ -67,26 +67,10 @@ class _ChassisOrEngineNoSearchViewState
               const SizedBox(height: 16),
               CustomSearchWidget(),
 
-              // Search Field
-
-              // Header Row
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 12,
-                  ),
-                  decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.8),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: DescriptionBar(
-                    text1: 'Chassis No.',
-                    text2: 'Make',
-                    text3: 'Engine No.',
-                  ),
-                ),
+              DescriptionBar(
+                text1: 'Chassis No.',
+                text2: 'Make',
+                text3: 'Engine No.',
               ),
               const SizedBox(height: 8),
 

@@ -29,22 +29,7 @@ class _LetterDownloadViewState extends State<LetterDownloadView> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: DescriptionBar(
-                text1: 'Reg. No',
-                text2: 'Loan No.',
-                // text3: 'Requested On',
-                text3: 'Status',
-              ),
-            ),
-          ),
+          DescriptionBar(text1: 'Reg#', text2: 'loan No.', text3: 'status'),
           SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
