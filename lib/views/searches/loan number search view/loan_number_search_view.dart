@@ -155,7 +155,7 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
 
                         vehicle['engineNo'] ?? '',
                         style: TextStyle(
-                          color: AppColors.primary,
+                          color: AppColors.kDarkElevated,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
