@@ -33,6 +33,7 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header
               HeaderAsAppBar(text: "Engine/Chassis Search", isbackicon: true),
@@ -41,33 +42,48 @@ class ChassisOrEngineNoSearchView extends StatelessWidget {
               // Search Field
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter Chassis or Engine No",
-                    prefixIcon: Icon(Icons.search, color: AppColors.primary),
-                    filled: false,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(
-                        color: Colors.black.withOpacity(1),
-                        width: 1,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 7,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Chassis or Engine No.",
+                          // prefixIcon: Icon(
+                          //   Icons.search,
+                          //   color: AppColors.primary,
+                          // ),
+                          suffixIcon: Icon(Icons.mic),
+                          filled: false,
+                          fillColor: AppColors.kLightElevated,
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: Colors.black.withOpacity(1),
+                              width: 1,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(
+                              color: AppColors.primary,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          // Implement search logic if needed
+                        },
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(
-                        color: AppColors.primary,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {
-                    // Implement search logic if needed
-                  },
+                    Expanded(flex: 1, child: Icon(Icons.search)),
+                  ],
                 ),
               ),
-
-              const SizedBox(height: 16),
+              Padding(
+                padding: EdgeInsets.all(16),
+                child: Icon(Icons.filter_list_outlined),
+              ),
 
               // Header Row
               Padding(
