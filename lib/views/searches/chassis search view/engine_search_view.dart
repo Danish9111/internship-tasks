@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/dashboard%20view/dashboard_view.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/description_bar.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/custom_search_widget.dart';
 
 class ChassisOrEngineNoSearchView extends StatefulWidget {
   const ChassisOrEngineNoSearchView({super.key});
@@ -37,12 +39,6 @@ class _ChassisOrEngineNoSearchViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Get.to(() => DashboardView());
-          },
-        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(24), // Adjust the radius as needed
@@ -69,81 +65,9 @@ class _ChassisOrEngineNoSearchViewState
               // Header
               // HeaderAsAppBar(text: "Engine/Chassis Search", isbackicon: true),
               const SizedBox(height: 16),
+              CustomSearchWidget(),
 
               // Search Field
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 7,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Enter Chassis or Engine No.",
-                          // prefixIcon: Icon(
-                          //   Icons.search,
-                          //   color: AppColors.primary,
-                          // ),
-                          suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.mic),
-                          ),
-                          filled: false,
-                          fillColor: AppColors.kLightElevated,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: Colors.black.withOpacity(1),
-                              width: 1,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(
-                              color: AppColors.primary,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                        onChanged: (value) {
-                          // Implement search logic if needed
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: IconButton(
-                        icon: Icon(Icons.search),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: DropdownButton<String>(
-                  dropdownColor: Colors.white,
-                  value: selectedValue, // the current selected item
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedValue = newValue!;
-                    });
-                  },
-                  items:
-                      <String>[
-                        'By Number',
-                        'By Make',
-                        'By Engine',
-                        'By Chassis',
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                ),
-              ),
 
               // Header Row
               Padding(
@@ -157,41 +81,10 @@ class _ChassisOrEngineNoSearchViewState
                     color: AppColors.primary.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Row(
-                    children: const [
-                      Expanded(
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          "Chassis No",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          textAlign: TextAlign.center,
-
-                          "Vehicle Make",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          textAlign: TextAlign.center,
-
-                          "Engine No",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
+                  child: DescriptionBar(
+                    text1: 'Chassis No.',
+                    text2: 'Make',
+                    text3: 'Engine No.',
                   ),
                 ),
               ),

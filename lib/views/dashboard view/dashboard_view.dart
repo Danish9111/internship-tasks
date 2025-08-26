@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/searches/chasis/engine_search_view.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/chassis%20search%20view/engine_search_view.dart';
 import 'package:legal_vehicle_recovery_managment_app/widgets/custom_button.dart';
 
 class DashboardView extends StatefulWidget {
@@ -113,13 +113,14 @@ class _DashboardViewState extends State<DashboardView> {
                     _DashboardTile(
                       title: "Loan Number Search",
                       icon: Icons.numbers,
-                      onTap: () => Get.toNamed("/loan-search"),
+                      onTap: () => Get.toNamed("/loan-number-search"),
                     ),
                     _DashboardTile(
                       title: "Sync Status",
                       icon: hasDataChanged ? Icons.sync : Icons.sync_disabled,
                       color: hasDataChanged ? Colors.green : Colors.red,
-                      onTap: () {}, // maybe show details
+                      onTap: () =>
+                          Get.toNamed("/sync-status"), // maybe show details
                     ),
                   ],
                 ),
@@ -148,64 +149,64 @@ class _DashboardViewState extends State<DashboardView> {
   }
 }
 
-class HeaderAsAppBar extends StatelessWidget {
-  final String text;
-  final bool isbackicon;
-  const HeaderAsAppBar({
-    super.key,
-    required this.text,
-    this.isbackicon = false,
-  });
+// class HeaderAsAppBar extends StatelessWidget {
+//   final String text;
+//   final bool isbackicon;
+//   const HeaderAsAppBar({
+//     super.key,
+//     required this.text,
+//     this.isbackicon = false,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.8),
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: isbackicon
-                  ? Align(
-                      alignment: AlignmentGeometry.centerLeft,
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Icon(Icons.arrow_back, color: Colors.white),
-                        ),
-                      ),
-                    )
-                  : SizedBox(),
-            ),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 60,
+//       width: double.infinity,
+//       decoration: BoxDecoration(
+//         color: AppColors.primary.withValues(alpha: 0.8),
+//         borderRadius: BorderRadius.only(
+//           bottomLeft: Radius.circular(20),
+//           bottomRight: Radius.circular(20),
+//         ),
+//       ),
+//       child: Center(
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Expanded(
+//               child: isbackicon
+//                   ? Align(
+//                       alignment: AlignmentGeometry.centerLeft,
+//                       child: GestureDetector(
+//                         onTap: () {
+//                           Get.back();
+//                         },
+//                         child: Padding(
+//                           padding: const EdgeInsets.only(left: 5),
+//                           child: Icon(Icons.arrow_back, color: Colors.white),
+//                         ),
+//                       ),
+//                     )
+//                   : SizedBox(),
+//             ),
 
-            Text(
-              textAlign: TextAlign.center,
-              text,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-            ),
-            Expanded(child: SizedBox()),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//             Text(
+//               textAlign: TextAlign.center,
+//               text,
+//               style: TextStyle(
+//                 color: Colors.white,
+//                 fontWeight: FontWeight.bold,
+//                 fontSize: 24,
+//               ),
+//             ),
+//             Expanded(child: SizedBox()),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class _DashboardTile extends StatelessWidget {
   final String title;
