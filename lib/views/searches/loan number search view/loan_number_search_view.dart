@@ -14,7 +14,7 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
   final List<Map<String, String>> loanSearchData = [
     {
       "loanNo": "LN10001",
-      "chassisNo": "M",
+      "chassisNo": "MD634KE42L9C78901",
       "make": "Maruti Swift VXI",
       "engineNo": "D13A567890",
     },
@@ -88,7 +88,7 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
                   Expanded(
                     child: Text(
                       textAlign: TextAlign.center,
-                      'Vehicle No.',
+                      'Make',
 
                       style: TextStyle(
                         color: Colors.white,
@@ -129,34 +129,49 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        textAlign: TextAlign.center,
-
-                        vehicle['loanNo'] ?? '',
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.w600,
+                      Expanded(
+                        child: Text(
+                          vehicle['loanNo'] ?? '',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-
-                      Text(
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-
-                        vehicle['make'] ?? '',
-                        style: TextStyle(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.w600,
+                      SizedBox(
+                        width: 50,
+                        child: Text(
+                          vehicle['chassisNo'] ?? '',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                      Text(
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-
-                        vehicle['engineNo'] ?? '',
-                        style: TextStyle(
-                          color: AppColors.kDarkElevated,
-                          fontWeight: FontWeight.w600,
+                      Expanded(
+                        child: Text(
+                          vehicle['make'] ?? '',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          vehicle['engineNo'] ?? '',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.fade,
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ],

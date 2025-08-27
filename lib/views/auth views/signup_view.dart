@@ -17,6 +17,8 @@ class _LoginViewState extends State<RegisterView>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
+  final _phoneCtrl = TextEditingController();
+  final _nameCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();
 
   late final AnimationController _ac;
@@ -107,9 +109,11 @@ class _LoginViewState extends State<RegisterView>
                         children: [
                           // Name
                           TextFormField(
-                            controller: _emailCtrl,
+                            controller: _nameCtrl,
                             keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
+                            ),
                             decoration: _decoration('Name', icon: Icons.person)
                                 .copyWith(
                                   filled: true,
@@ -127,9 +131,11 @@ class _LoginViewState extends State<RegisterView>
                           const SizedBox(height: 14),
                           // Phone Number
                           TextFormField(
-                            controller: _emailCtrl,
+                            controller: _phoneCtrl,
                             keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
+                            ),
                             decoration: _decoration('Phone', icon: Icons.phone)
                                 .copyWith(
                                   filled: true,
@@ -151,7 +157,9 @@ class _LoginViewState extends State<RegisterView>
                           TextFormField(
                             controller: _emailCtrl,
                             keyboardType: TextInputType.emailAddress,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
+                            ),
                             decoration:
                                 _decoration(
                                   'Email',
@@ -175,7 +183,9 @@ class _LoginViewState extends State<RegisterView>
                           TextFormField(
                             controller: _passwordCtrl,
                             obscureText: true,
-                            style: const TextStyle(color: Colors.white),
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
+                            ),
                             decoration:
                                 _decoration(
                                   'Password',
@@ -269,7 +279,7 @@ class _LoginViewState extends State<RegisterView>
                             spacing: 10,
                             children: [
                               ImageSelctionsContainers(text: "Upload Adhar"),
-                              ImageSelctionsContainers(text: 'Uload Picture'),
+                              ImageSelctionsContainers(text: 'Upload Picture'),
                             ],
                           ),
                           const SizedBox(height: 16),

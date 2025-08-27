@@ -37,9 +37,19 @@ class _CameraSearchViewState extends State<CameraSearchView> {
                   color: Colors.grey[400],
                   borderRadius: BorderRadius.circular(12),
                 ),
-                height: 100,
+                height: 150,
                 width: double.infinity,
-                child: Icon(Icons.camera_alt, size: 40),
+                child: Center(
+                  child: Container(
+                    height: 70,
+                    width: 70,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(.5),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Icon(Icons.camera_alt, size: 40),
+                  ),
+                ),
               ),
               onTap: () {
                 ScaffoldMessenger.of(context).showSnackBar(

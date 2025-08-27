@@ -55,9 +55,21 @@ class _CustomSearchWidgetState extends State<CustomSearchWidget> {
                   },
                 ),
               ),
+              SizedBox(width: 10),
               Expanded(
                 flex: 1,
-                child: IconButton(icon: Icon(Icons.search), onPressed: () {}),
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: IconButton(
+                    icon: Icon(Icons.search, color: Colors.white),
+                    onPressed: () {},
+                  ),
+                ),
               ),
             ],
           ),
