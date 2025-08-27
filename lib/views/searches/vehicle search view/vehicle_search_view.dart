@@ -43,7 +43,7 @@ class _VehicleSearchViewState extends State<VehicleSearchView> {
       body: Column(
         children: [
           SizedBox(height: 10),
-          CustomSearchWidget(),
+          CustomSearchWidget(hintText: 'Enter Vehicle No.'),
           DescriptionBar(text1: 'Vehicle No.', text2: 'Model'),
 
           SizedBox(height: 10),

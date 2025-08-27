@@ -65,7 +65,7 @@ class _ChassisOrEngineNoSearchViewState
               // Header
               // HeaderAsAppBar(text: "Engine/Chassis Search", isbackicon: true),
               const SizedBox(height: 16),
-              CustomSearchWidget(),
+              CustomSearchWidget(hintText: 'Enter Chassis or Engine No.'),
 
               DescriptionBar(
                 text1: 'Chassis No.',

@@ -28,7 +28,7 @@ class _CameraSearchViewState extends State<CameraSearchView> {
       body: Column(
         children: [
           SizedBox(height: 20),
-          CustomSearchWidget(),
+          CustomSearchWidget(hintText: 'Search'),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: InkWell(

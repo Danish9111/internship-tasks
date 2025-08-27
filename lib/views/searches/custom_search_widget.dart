@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 
 class CustomSearchWidget extends StatefulWidget {
-  const CustomSearchWidget({super.key});
+  final String? hintText;
+
+  const CustomSearchWidget({super.key, required this.hintText});
 
   @override
   State<CustomSearchWidget> createState() => _CustomSearchWidgetState();
@@ -24,7 +26,7 @@ class _CustomSearchWidgetState extends State<CustomSearchWidget> {
                 flex: 7,
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: "Enter Chassis or Engine No.",
+                    hintText: widget.hintText,
                     // prefixIcon: Icon(
                     //   Icons.search,
                     //   color: AppColors.primary,

@@ -52,7 +52,7 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
       body: Column(
         children: [
           SizedBox(height: 20),
-          CustomSearchWidget(),
+          CustomSearchWidget(hintText: 'Search by Loan Number'),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
