@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/instance_manager.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/auth%20views/login_view.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/auth%20views/signup_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/dashboard view/dashboard_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/searches/chassis search view/engine_search_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/searches/camera search view/camera_search_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/searches/vehicle search view/vehicle_search_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/searches/loan number search view/loan_number_search_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/letter download/letter_download_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/sync%20status%20view/sync_status.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/dashboard%20screen/dashboard_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/chassis%20search%20screen/chassis_search_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/camer%20search%20sceen/camera_search_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/vehicle%20search%20screen/vehicle_search_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/searches/loan%20number%20search%20screen/loan_number_search_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/letter%20download/letter_download_screen.dart';
+// import 'package:legal_vehicle_recovery_managment_app/views/sync%20status%20view/sync_status.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/vehicle_details_screen.dart';
+import 'package:legal_vehicle_recovery_managment_app/search_bar_settings.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,13 +58,14 @@ class MyApp extends StatelessWidget {
           name: '/letter-download',
           page: () => const LetterDownloadView(),
         ),
-        GetPage(name: '/sync-status', page: () => const SyncStatusView()),
+        GetPage(name: '/sync-status', page: () => const VehicleDetailsPage()),
 
         GetPage(
           name: '/chassis-search',
           page: () => const ChassisOrEngineNoSearchView(),
         ),
         GetPage(name: '/dashboard', page: () => const DashboardView()),
+        GetPage(name: '/settings', page: () => const SettingsPage()),
         // Add other routes here
       ],
     );

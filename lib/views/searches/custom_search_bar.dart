@@ -1,0 +1,149 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+// import 'package:get/state_manager.dart';
+import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
+import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+
+class FourDigitFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    String newText = newValue.text;
+
+    // Check if the new value's length is greater than 4
+    if (newText.length > 4) {
+      // If it is, return an empty value, effectively clearing the field.
+      // The cursor position is also reset to the start.
+      return const TextEditingValue(
+        text: '',
+        selection: TextSelection.collapsed(offset: 0),
+      );
+    }
+
+    // Otherwise, return the new value as is.
+    return newValue;
+  }
+}
+
+class CustomSearchWidget extends StatefulWidget {
+  final String? hintText;
+
+  const CustomSearchWidget({super.key, required this.hintText});
+
+  @override
+  State<CustomSearchWidget> createState() => _CustomSearchWidgetState();
+}
+
+class _CustomSearchWidgetState extends State<CustomSearchWidget> {
+  String selectedValue = 'By Number';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(50)),
+                    color: AppColors.kLightElevated,
+                    border: Border.all(color: Colors.black87),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          inputFormatters: [FourDigitFormatter()],
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            hintText: widget.hintText,
+                            hintStyle: TextStyle(color: AppColors.kGrey),
+
+                            filled: false,
+                            fillColor: AppColors.kLightElevated,
+                          ),
+                          onChanged: (value) {
+                            // Implement search logic if needed
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 4),
+
+                      ///between two fields
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                Get.toNamed('/settings');
+                              },
+                              icon: Icon(Icons.settings, color: Colors.grey),
+                            ),
+                            filled: false,
+                            fillColor: AppColors.kLightElevated,
+                            hintText: 'ABCD',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            // enabledBorder: OutlineInputBorder(
+                          ),
+
+                          keyboardType: TextInputType.name,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // SizedBox(width: 10),
+              // Expanded(
+              //   flex: 1,
+              //   child: Container(
+              //     height: 50,
+              //     decoration: BoxDecoration(
+              //       color: Colors.green,
+
+              //       borderRadius: BorderRadius.all(Radius.circular(10)),
+              //     ),
+              //     child: IconButton(
+              //       icon: Icon(Icons.search, color: Colors.white),
+              //       onPressed: () {},
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: DropdownButton<String>(
+            dropdownColor: Colors.white,
+            value: selectedValue, // the current selected item
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedValue = newValue!;
+              });
+            },
+            items: <String>['By Number', 'By Make', 'By Engine', 'By Chassis']
+                .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: TextStyle(color: AppColors.blackTextColor),
+                    ),
+                  );
+                })
+                .toList(),
+          ),
+        ),
+      ],
+    );
+  }
+}

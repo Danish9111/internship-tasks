@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_images.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/auth%20views/login_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/auth%20views/signup_view.dart';
 import 'package:legal_vehicle_recovery_managment_app/widgets/custom_button.dart';
 
 class RegisterView extends StatefulWidget {
@@ -132,7 +131,8 @@ class _LoginViewState extends State<RegisterView>
                           // Phone Number
                           TextFormField(
                             controller: _phoneCtrl,
-                            keyboardType: TextInputType.emailAddress,
+                            keyboardType: TextInputType.phone,
+
                             style: const TextStyle(
                               color: AppColors.blackTextColor,
                             ),
@@ -166,8 +166,7 @@ class _LoginViewState extends State<RegisterView>
                                   icon: Icons.email_outlined,
                                 ).copyWith(
                                   filled: true,
-                                  fillColor: AppColors
-                                      .kLightElevated, // or any color you want
+                                  fillColor: AppColors.kLightElevated,
                                 ),
                             validator: (v) {
                               if (v == null || v.trim().isEmpty)
@@ -293,10 +292,7 @@ class _LoginViewState extends State<RegisterView>
                           Row(
                             children: [
                               Expanded(
-                                child: Container(
-                                  height: 1,
-                                  color: const Color(0xFF2A3039),
-                                ),
+                                child: Container(height: 1, color: Colors.grey),
                               ),
                               const Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 12),
@@ -306,17 +302,15 @@ class _LoginViewState extends State<RegisterView>
                                 ),
                               ),
                               Expanded(
-                                child: Container(
-                                  height: 1,
-                                  color: const Color(0xFF2A3039),
-                                ),
+                                child: Container(height: 1, color: Colors.grey),
                               ),
                             ],
                           ),
 
                           const SizedBox(height: 14),
 
-                          // Footer: Signup
+                          // Footer:
+                          // Signup
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -359,23 +353,33 @@ class ImageSelctionsContainers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        height: 120,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(10),
+        child: Ink(
+          decoration: BoxDecoration(
+            color: AppColors.kLightElevated,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(10),
+            splashColor: Colors.grey.withOpacity(0.2),
 
-        decoration: BoxDecoration(
-          color: AppColors.kLightElevated,
-          borderRadius: BorderRadius.circular(10),
-          // border: Border.all(color: AppColors.primary),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.image, color: Colors.grey),
-            Text(
-              text,
-              style: TextStyle(color: const Color.fromARGB(255, 111, 111, 111)),
+            onTap: () {},
+            child: SizedBox(
+              height: 120,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.image, color: Colors.grey),
+                  Text(
+                    text,
+                    style: TextStyle(color: Color.fromARGB(255, 111, 111, 111)),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_images.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/auth%20views/signup_view.dart';
-import 'package:legal_vehicle_recovery_managment_app/views/dashboard%20view/dashboard_view.dart';
+import 'package:legal_vehicle_recovery_managment_app/views/dashboard%20screen/dashboard_screen.dart';
 import 'package:legal_vehicle_recovery_managment_app/widgets/custom_button.dart';
 
 class LoginView extends StatefulWidget {
@@ -74,161 +74,170 @@ class _LoginViewState extends State<LoginView>
     return Scaffold(
       backgroundColor: AppColors.lightScaffoldBackgroundColor,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Header with curved bottom and subtle overlay
-            // CustomHeader(fadeIn: _fadeIn, slideUpHeader: _slideUpHeader),
-            Image.asset('assets/logo.png', height: 150),
-            const Text(
-              'Login to your account',
-              style: TextStyle(
-                color: AppColors.blackTextColor,
-                fontSize: 20,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.5,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Header with curved bottom and subtle overlay
+              // CustomHeader(fadeIn: _fadeIn, slideUpHeader: _slideUpHeader),
+              Image.asset('assets/logo.png', height: 150),
+              const Text(
+                'Login to your account',
+                style: TextStyle(
+                  color: AppColors.blackTextColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.5,
+                ),
               ),
-            ),
 
-            // Form
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              child: FadeTransition(
-                opacity: _fadeIn,
-                child: SlideTransition(
-                  position: _slideUpForm,
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: _emailCtrl,
-                          keyboardType: TextInputType.emailAddress,
-                          style: const TextStyle(color: Colors.white),
-                          decoration:
-                              _decoration(
-                                'Email',
-                                icon: Icons.mail_outline,
-                              ).copyWith(
-                                filled: true,
-                                fillColor: AppColors.kLightElevated,
-                              ),
-                          validator: (v) {
-                            if (v == null || v.trim().isEmpty)
-                              return 'Email is required';
-                            final ok = RegExp(
-                              r'^[\w\.\-]+@[\w\.\-]+\.\w+$',
-                            ).hasMatch(v.trim());
-                            return ok ? null : 'Enter a valid email';
-                          },
-                        ),
-                        const SizedBox(height: 14),
-                        TextFormField(
-                          controller: _passwordCtrl,
-                          obscureText: true,
-                          style: const TextStyle(color: Colors.white),
-                          decoration:
-                              _decoration(
-                                'Password',
-                                icon: Icons.lock_outline,
-                              ).copyWith(
-                                filled: true,
-                                fillColor: AppColors.kLightElevated,
-                              ),
-                          validator: (v) {
-                            if (v == null || v.isEmpty)
-                              return 'Password is required';
-                            if (v.length < 6) return 'Minimum 6 characters';
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 10),
-
-                        // Forgot password (optional)
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: () {},
-                            style: TextButton.styleFrom(
-                              foregroundColor: AppColors.kGrey,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                              ),
+              // Form
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
+                child: FadeTransition(
+                  opacity: _fadeIn,
+                  child: SlideTransition(
+                    position: _slideUpForm,
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: _emailCtrl,
+                            keyboardType: TextInputType.emailAddress,
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
                             ),
-                            child: const Text('Forgot password?'),
+                            decoration:
+                                _decoration(
+                                  'Email',
+                                  icon: Icons.mail_outline,
+                                ).copyWith(
+                                  filled: true,
+                                  fillColor: AppColors.kLightElevated,
+                                ),
+                            validator: (v) {
+                              if (v == null || v.trim().isEmpty)
+                                return 'Email is required';
+                              final ok = RegExp(
+                                r'^[\w\.\-]+@[\w\.\-]+\.\w+$',
+                              ).hasMatch(v.trim());
+                              return ok ? null : 'Enter a valid email';
+                            },
                           ),
-                        ),
-
-                        const SizedBox(height: 10),
-
-                        // Login button
-                        CustomElevatedButton(
-                          onTap: () {
-                            Get.to(() => DashboardView());
-                          },
-                          text: "Login",
-                        ),
-
-                        const SizedBox(height: 16),
-
-                        // Divider
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 1,
-                                color: const Color(0xFF2A3039),
-                              ),
+                          const SizedBox(height: 14),
+                          TextFormField(
+                            controller: _passwordCtrl,
+                            obscureText: true,
+                            style: const TextStyle(
+                              color: AppColors.blackTextColor,
                             ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 12),
-                              child: Text(
-                                'or',
-                                style: TextStyle(color: Color(0xFF9EA4AE)),
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                height: 1,
-                                color: const Color(0xFF2A3039),
-                              ),
-                            ),
-                          ],
-                        ),
+                            decoration:
+                                _decoration(
+                                  'Password',
+                                  icon: Icons.lock_outline,
+                                ).copyWith(
+                                  filled: true,
+                                  fillColor: AppColors.kLightElevated,
+                                ),
+                            validator: (v) {
+                              if (v == null || v.isEmpty)
+                                return 'Password is required';
+                              if (v.length < 6) return 'Minimum 6 characters';
+                              return null;
+                            },
+                          ),
+                          const SizedBox(height: 10),
 
-                        const SizedBox(height: 14),
-
-                        // Footer: Signup
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Don't have an account? ",
-                              style: TextStyle(color: AppColors.kGrey),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                // TODO: Navigate to signup
-                                Get.to(() => RegisterView());
-                              },
-                              child: const Text(
-                                'Sign up',
-                                style: TextStyle(
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.w700,
+                          // Forgot password (optional)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: () {},
+                              style: TextButton.styleFrom(
+                                foregroundColor: AppColors.kGrey,
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
                                 ),
                               ),
+                              child: const Text('Forgot password?'),
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 12),
-                      ],
+                          ),
+
+                          const SizedBox(height: 10),
+
+                          // Login button
+                          CustomElevatedButton(
+                            onTap: () {
+                              Get.to(() => DashboardView());
+                            },
+                            text: "Login",
+                          ),
+
+                          const SizedBox(height: 16),
+
+                          // Divider
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 1,
+                                  color: const Color(0xFF2A3039),
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 12),
+                                child: Text(
+                                  'or',
+                                  style: TextStyle(color: Color(0xFF9EA4AE)),
+                                ),
+                              ),
+                              Expanded(
+                                child: Container(
+                                  height: 1,
+                                  color: const Color(0xFF2A3039),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 14),
+
+                          // Footer: Signup
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Don't have an account? ",
+                                style: TextStyle(color: AppColors.kGrey),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  // TODO: Navigate to signup
+                                  Get.to(() => RegisterView());
+                                },
+                                child: const Text(
+                                  'Sign up',
+                                  style: TextStyle(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
