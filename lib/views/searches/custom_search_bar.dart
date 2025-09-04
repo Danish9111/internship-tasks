@@ -4,25 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:get/get.dart';
 
-class FourDigitFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    String newText = newValue.text;
-
-    if (newText.length > 4) {
-      return const TextEditingValue(
-        text: '',
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    }
-
-    return newValue;
-  }
-}
-
 class CustomSearchWidget extends StatefulWidget {
   final String? hintText;
 
@@ -144,5 +125,24 @@ class _CustomSearchWidgetState extends State<CustomSearchWidget> {
         // ),
       ],
     );
+  }
+}
+
+class FourDigitFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    String newText = newValue.text;
+
+    if (newText.length > 4) {
+      return const TextEditingValue(
+        text: '',
+        selection: TextSelection.collapsed(offset: 0),
+      );
+    }
+
+    return newValue;
   }
 }
