@@ -129,7 +129,10 @@ class _DashboardViewState extends State<DashboardView> {
 
               // SYNC BUTTON
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                  vertical: 10,
+                ),
                 child: CustomElevatedButton(
                   text: "Sync Data",
                   color: hasDataChanged ? Colors.green : Colors.red,

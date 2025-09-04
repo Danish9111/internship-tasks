@@ -12,9 +12,15 @@ import 'package:legal_vehicle_recovery_managment_app/views/letter%20download/let
 // import 'package:legal_vehicle_recovery_managment_app/views/sync%20status%20view/sync_status.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/vehicle_details_screen.dart';
 import 'package:legal_vehicle_recovery_managment_app/search_bar_settings.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true, // 🔥 Only in debug/profile
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,6 +29,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
