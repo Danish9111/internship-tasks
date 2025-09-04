@@ -14,34 +14,34 @@ class LoanNumberSearchView extends StatefulWidget {
 class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
   final List<Map<String, String>> loanSearchData = [
     {
-      "loanNo": "LN10001",
-      "chassisNo": "MD634KE42L9C78901",
-      "make": "Maruti Swift VXI",
-      "engineNo": "D13A567890",
+      "Loan No.": "LN10001",
+      "Chassis No.": "MD634KE42L9C78901",
+      "Make": "Maruti Swift VXI",
+      "Engine No.": "D13A567890",
     },
     {
-      "loanNo": "LN10002",
-      "chassisNo": "MD634KE42L9C78901",
-      "make": "Bajaj Pulsar 220F",
-      "engineNo": "ENG98765P220",
+      "Loan No.": "LN10002",
+      "Chassis No.": "MD634KE42L9C78901",
+      "Make": "Bajaj Pulsar 220F",
+      "Engine No.": "ENG98765P220",
     },
     {
-      "loanNo": "LN10003",
+      "Loan No.": "LN10003",
       "chassisNo": "ME4JF508JK1234567",
-      "make": "Honda Activa 125",
-      "engineNo": "ACTIVAENG123",
+      "Make": "Honda Activa 125",
+      "Engine No.": "ACTIVAENG123",
     },
     {
-      "loanNo": "LN10004",
-      "chassisNo": "MD2A18AZ7KC987654",
-      "make": "Royal Enfield Meteor",
-      "engineNo": "RE350ENG777",
+      "Loan No.": "LN10004",
+      "Chassis No.": "MD2A18AZ7KC987654",
+      "Make": "Royal Enfield Meteor",
+      "Engine No.": "RE350ENG777",
     },
     {
-      "loanNo": "LN10005",
-      "chassisNo": "MALA851CLJM456789",
-      "make": "Hyundai i20 Sportz",
-      "engineNo": "KAPPAENG234",
+      "Loan No.": "LN10005",
+      "Chassis No.": "MALA851CLJM456789",
+      "Make": "Hyundai i20 Sportz",
+      "Engine No.": "KAPPAENG234",
     },
   ];
   @override
@@ -57,10 +57,12 @@ class _LoanNumberSearchViewState extends State<LoanNumberSearchView> {
 
           SizedBox(height: 10),
           CustomTable(
-            columnWidths: [80],
+            //customize as needed
+            columnWidths: [80, 100, 100, 100],
             headerColor: AppColors.primary.withOpacity(.8),
             data: loanSearchData,
-            headers: ['loanNo', 'chassisNo', 'make', 'engineNo'],
+            //header name should match keys in maps above or data may disapear from table
+            headers: ['Loan No.', 'Chassis No.', 'Make', 'Engine No.'],
           ),
         ],
       ),

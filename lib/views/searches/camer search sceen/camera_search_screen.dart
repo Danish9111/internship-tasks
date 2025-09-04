@@ -12,13 +12,14 @@ class CameraSearchView extends StatefulWidget {
 }
 
 class _CameraSearchViewState extends State<CameraSearchView> {
-  // final List<Map<String, dynamic>> cameraSearchData = [
-  //   {"vehicleNo": "KA44W2168", "matched": false},
-  //   {"vehicleNo": "KA05JK9090", "matched": false},
-  //   {"vehicleNo": "KA12PQ6789", "matched": true},
-  //   {"vehicleNo": "KA09ZZ1234", "matched": false},
-  //   {"vehicleNo": "KA18GH4321", "matched": true},
-  // ];
+  final List<Map<String, dynamic>> cameraSearchData = [
+    {"Vehicle No": "KA44W2168", "Matched": true},
+    {"Vehicle No": "KA05JK9090", "Matched": false},
+    {"Vehicle No": "KA05JK9090", "Matched": false},
+    {"Vehicle No": "KA05JK9090", "Matched": false},
+    {"Vehicle No": "KA05JK9090", "Matched": false},
+    {"Vehicle No": "KA05JK9090", "Matched": false},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +65,7 @@ class _CameraSearchViewState extends State<CameraSearchView> {
           SizedBox(height: 20),
           CustomTable(
             headers: ["Vehicle No", "Matched"],
-            data: [
-              {"Vehicle No": "KA44W2168", "Matched": true},
-              {"Vehicle No": "KA05JK9090", "Matched": false},
-              {"Vehicle No": "KA05JK9090", "Matched": false},
-              {"Vehicle No": "KA05JK9090", "Matched": false},
-              {"Vehicle No": "KA05JK9090", "Matched": false},
-              {"Vehicle No": "KA05JK9090", "Matched": false},
-            ],
+            data: cameraSearchData,
             headerColor: AppColors.primary.withOpacity(.8),
             defaultColumnWidth: 180,
             columnWidths: [200, 100],

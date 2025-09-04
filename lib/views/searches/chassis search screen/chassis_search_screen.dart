@@ -14,24 +14,45 @@ class ChassisOrEngineNoSearchView extends StatefulWidget {
 
 class _ChassisOrEngineNoSearchViewState
     extends State<ChassisOrEngineNoSearchView> {
-  // final List<Map<String, String>> vehicles = const [
-  //   {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
-  //   {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
-  //   {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
-  //   {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
-  //   {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
-  //   {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
-  //   {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
-  //   {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
-  //   {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
-  //   {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
-  //   {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
-  //   {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
-  //   {"chassis": "CH12345678", "make": "Toyota Corolla", "engine": "EN98765432"},
-  //   {"chassis": "CH87654321", "make": "Honda Civic", "engine": "EN12345678"},
-  //   {"chassis": "CH56781234", "make": "Suzuki Swift", "engine": "EN56781234"},
-  //   // Add more sample vehicles or fetch from API
-  // ];
+  final List<Map<String, String>> vehiclesData = [
+    {
+      "Chassis No.": "CH12345678",
+      "Make": "Toyota Corolla",
+      "Engine No.": "EN98765432",
+    },
+    {
+      "Chassis No.": "CH87654321",
+      "Make": "Honda Civic",
+      "Engine No.": "EN12345678",
+    },
+    {
+      "Chassis No.": "CH56781234",
+      "Make": "Suzuki Swift",
+      "Engine No.": "EN56781234",
+    },
+    {
+      "Chassis No.": "CH12345678",
+      "Make": "Toyota Corolla",
+      "Engine No.": "EN98765432",
+    },
+    {
+      "Chassis No.": "CH87654321",
+      "Make": "Honda Civic",
+      "Engine No.": "EN12345678",
+    },
+    {
+      "Chassis No.": "CH56781234",
+      "Make": "Suzuki Swift",
+      "Engine No.": "EN56781234",
+    },
+    {
+      "Chassis No.": "CH12345678",
+      "Make": "Toyota Corolla",
+      "Engine No.": "EN98765432",
+    },
+
+    // Add more sample vehicles or fetch from API
+  ];
   String selectedValue = 'By Number';
 
   @override
@@ -71,45 +92,9 @@ class _ChassisOrEngineNoSearchViewState
               // List of Vehicles
               CustomTable(
                 headerColor: AppColors.primary.withOpacity(.8),
-                data: [
-                  {
-                    "Chassis No.": "CH12345678",
-                    "Make": "Toyota Corolla",
-                    "Engine No.": "EN98765432",
-                  },
-                  {
-                    "Chassis No.": "CH87654321",
-                    "Make": "Honda Civic",
-                    "Engine No.": "EN12345678",
-                  },
-                  {
-                    "Chassis No.": "CH56781234",
-                    "Make": "Suzuki Swift",
-                    "Engine No.": "EN56781234",
-                  },
-                  {
-                    "Chassis No.": "CH12345678",
-                    "Make": "Toyota Corolla",
-                    "Engine No.": "EN98765432",
-                  },
-                  {
-                    "Chassis No.": "CH87654321",
-                    "Make": "Honda Civic",
-                    "Engine No.": "EN12345678",
-                  },
-                  {
-                    "Chassis No.": "CH56781234",
-                    "Make": "Suzuki Swift",
-                    "Engine No.": "EN56781234",
-                  },
-                  {
-                    "Chassis No.": "CH12345678",
-                    "Make": "Toyota Corolla",
-                    "Engine No.": "EN98765432",
-                  },
-
-                  // Add more sample vehicles or fetch from API
-                ],
+                data: vehiclesData,
+                //keep the header name exactly same as in the map keys
+                //or data may disappear from the table due to
                 headers: ["Chassis No.", "Make", "Engine No."],
                 columnWidths: [150, 100, 100],
               ),

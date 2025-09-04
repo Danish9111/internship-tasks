@@ -12,15 +12,15 @@ class VehicleSearchView extends StatefulWidget {
 
 class _VehicleSearchViewState extends State<VehicleSearchView> {
   // 🔎 Vehicle Search Dummy Data
-  // final List<Map<String, String>> vehicleSearchData = [
-  //   {"vehicleNo": "KA02KR5555", "model": "TVS Ntorq 125"},
-  //   {"vehicleNo": "KA03JL8888", "model": "KTM Duke 200 BS6"},
-  //   {"vehicleNo": "KA05MN4321", "model": "Suzuki Access 125"},
-  //   {"vehicleNo": "KA11EV9999", "model": "Royal Enfield Classic 350"},
-  //   {"vehicleNo": "KA22HL5555", "model": "Suzuki Burgman Street 125"},
-  //   {"vehicleNo": "KA27TP7777", "model": "Jawa Perak"},
-  //   {"vehicleNo": "KA30X1234", "model": "Honda Activa 6G"},
-  // ];
+  final List<Map<String, String>> vehicleSearchData = [
+    {"vehicleNo": "KA02KR5555", "model": "TVS Ntorq 125"},
+    {"vehicleNo": "KA03JL8888", "model": "KTM Duke 200 BS6"},
+    {"vehicleNo": "KA05MN4321", "model": "Suzuki Access 125"},
+    {"vehicleNo": "KA11EV9999", "model": "Royal Enfield Classic 350"},
+    {"vehicleNo": "KA22HL5555", "model": "Suzuki Burgman Street 125"},
+    {"vehicleNo": "KA27TP7777", "model": "Jawa Perak"},
+    {"vehicleNo": "KA30X1234", "model": "Honda Activa 6G"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +46,7 @@ class _VehicleSearchViewState extends State<VehicleSearchView> {
 
           SizedBox(height: 10),
           CustomTable(
-            data: [
-              {"vehicleNo": "KA02KR5555", "model": "TVS Ntorq 125"},
-              {"vehicleNo": "KA03JL8888", "model": "KTM Duke 200 BS6"},
-              {"vehicleNo": "KA05MN4321", "model": "Suzuki Access 125"},
-              {"vehicleNo": "KA11EV9999", "model": "Royal Enfield Classic 350"},
-              {"vehicleNo": "KA22HL5555", "model": "Suzuki Burgman Street 125"},
-              {"vehicleNo": "KA27TP7777", "model": "Jawa Perak"},
-              {"vehicleNo": "KA30X1234", "model": "Honda Activa 6G"},
-            ],
+            data: vehicleSearchData,
             headers: ['vehicleNo', 'model'],
             headerColor: AppColors.primary.withOpacity(.8),
           ),

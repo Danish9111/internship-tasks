@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 // import 'package:get/state_manager.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:get/get.dart';
-import 'package:flutter/services.dart';
 
 class FourDigitFormatter extends TextInputFormatter {
   @override
@@ -13,17 +12,13 @@ class FourDigitFormatter extends TextInputFormatter {
   ) {
     String newText = newValue.text;
 
-    // Check if the new value's length is greater than 4
     if (newText.length > 4) {
-      // If it is, return an empty value, effectively clearing the field.
-      // The cursor position is also reset to the start.
       return const TextEditingValue(
         text: '',
         selection: TextSelection.collapsed(offset: 0),
       );
     }
 
-    // Otherwise, return the new value as is.
     return newValue;
   }
 }
@@ -55,12 +50,14 @@ class _CustomSearchWidgetState extends State<CustomSearchWidget> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(50)),
                     color: AppColors.kLightElevated,
+
                     border: Border.all(color: Colors.black87),
                   ),
                   child: Row(
                     children: [
                       Expanded(
                         child: TextField(
+                          controller: TextEditingController(),
                           inputFormatters: [FourDigitFormatter()],
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
@@ -120,29 +117,31 @@ class _CustomSearchWidgetState extends State<CustomSearchWidget> {
             ],
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: DropdownButton<String>(
-            dropdownColor: Colors.white,
-            value: selectedValue, // the current selected item
-            onChanged: (String? newValue) {
-              setState(() {
-                selectedValue = newValue!;
-              });
-            },
-            items: <String>['By Number', 'By Make', 'By Engine', 'By Chassis']
-                .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(color: AppColors.blackTextColor),
-                    ),
-                  );
-                })
-                .toList(),
-          ),
-        ),
+        SizedBox(height: 20),
+
+        // Padding(
+        //   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        //   child: DropdownButton<String>(
+        //     dropdownColor: Colors.white,
+        //     value: selectedValue, // the current selected item
+        //     onChanged: (String? newValue) {
+        //       setState(() {
+        //         selectedValue = newValue!;
+        //       });
+        //     },
+        //     items: <String>['By Number', 'By Make', 'By Engine', 'By Chassis']
+        //         .map<DropdownMenuItem<String>>((String value) {
+        //           return DropdownMenuItem<String>(
+        //             value: value,
+        //             child: Text(
+        //               value,
+        //               style: TextStyle(color: AppColors.blackTextColor),
+        //             ),
+        //           );
+        //         })
+        //         .toList(),
+        //   ),
+        // ),
       ],
     );
   }
