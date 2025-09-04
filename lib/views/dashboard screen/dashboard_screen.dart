@@ -3,6 +3,17 @@ import 'package:get/get.dart';
 import 'package:legal_vehicle_recovery_managment_app/config/app_colors.dart';
 import 'package:legal_vehicle_recovery_managment_app/views/searches/chassis%20search%20screen/chassis_search_screen.dart';
 import 'package:legal_vehicle_recovery_managment_app/widgets/custom_button.dart';
+import 'package:get/get.dart';
+
+class SyncController extends GetxController {
+  // reactive boolean
+  var hasDataChanged = false.obs;
+
+  void toggleDataChanged() {
+    hasDataChanged.value = !hasDataChanged.value;
+    print('Data changed: ${hasDataChanged.value}');
+  }
+}
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
@@ -12,11 +23,12 @@ class DashboardView extends StatefulWidget {
 }
 
 class _DashboardViewState extends State<DashboardView> {
-  bool hasDataChanged = true; // TODO: Replace with API state
-  int totalCases = 500; // TODO: Fetch from backend
-
+  // var hasDataChanged = true.obs;
+  int totalCases = 500;
   @override
   Widget build(BuildContext context) {
+    final syncController = Get.put(SyncController());
+
     return Scaffold(
       backgroundColor: AppColors.lightScaffoldBackgroundColor,
       appBar: AppBar(
@@ -115,12 +127,18 @@ class _DashboardViewState extends State<DashboardView> {
                       icon: Icons.numbers,
                       onTap: () => Get.toNamed("/loan-number-search"),
                     ),
-                    _DashboardTile(
-                      title: "Sync Status",
-                      icon: hasDataChanged ? Icons.sync : Icons.sync_disabled,
-                      color: hasDataChanged ? Colors.green : Colors.red,
-                      onTap: () => Get.toNamed("/sync-status"),
-                      // onTap: () {},
+                    Obx(
+                      () => _DashboardTile(
+                        title: "Sync Status",
+                        icon: syncController.hasDataChanged.value
+                            ? Icons.sync
+                            : Icons.sync_disabled,
+                        color: syncController.hasDataChanged.value
+                            ? Colors.green
+                            : Colors.red,
+                        onTap: () => Get.toNamed("/sync-status"),
+                        // onTap: () {},
+                      ),
                     ),
                   ],
                 ),
@@ -135,12 +153,13 @@ class _DashboardViewState extends State<DashboardView> {
                 ),
                 child: CustomElevatedButton(
                   text: "Sync Data",
-                  color: hasDataChanged ? Colors.green : Colors.red,
+                  color: syncController.hasDataChanged.value
+                      ? Colors.green
+                      : Colors.red,
                   onTap: () {
-                    setState(() {
-                      // TODO: Implement sync function
-                      hasDataChanged = !hasDataChanged; // just toggle for demo
-                    });
+                    // Implement sync function
+                    // just toggle for demo
+                    syncController.toggleDataChanged();
                   },
                 ),
               ),
